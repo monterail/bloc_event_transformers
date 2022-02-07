@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 import 'bloc/debounce_bloc.dart';
 
