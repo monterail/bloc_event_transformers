@@ -37,4 +37,21 @@ void main() {
       const ThrottleState(count: 100),
     ],
   );
+
+  blocTest<ThrottleBloc, ThrottleState>(
+    'Throttles events in two windows',
+    build: () => ThrottleBloc(throttleWindow),
+    act: (bloc) async {
+      List.generate(100, (index) => index)
+          .forEach((count) => bloc.add(NewThrottleEvent(count + 1)));
+      await Future.delayed(throttleWindow);
+      List.generate(100, (index) => index)
+          .forEach((count) => bloc.add(NewThrottleEvent(count + 101)));
+    },
+    wait: throttleWindow * 2,
+    expect: () => [
+      const ThrottleState(count: 1),
+      const ThrottleState(count: 101),
+    ],
+  );
 }
