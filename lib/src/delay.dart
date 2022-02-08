@@ -12,6 +12,6 @@ part of bloc_event_transformers;
 ///     on<ExampleEvent>(
 ///       _handleEvent,
 ///       transformer: delay(const Duration(seconds: 1)),
-///     )
+///     );
 EventTransformer<Event> delay<Event>(Duration duration) =>
     (events, mapper) => events.delay(duration).switchMap(mapper);
