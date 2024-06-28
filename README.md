@@ -2,7 +2,7 @@
 
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](.)
-<img src="./doc/assets/monterail_logo.svg" alt="Monterail's logo" width="25%" height="100" align="right"/>
+<img src="https://raw.githubusercontent.com/monterail/bloc_event_transformers/development/doc/assets/monterail_logo.svg" alt="Monterail's logo" width="25%" height="100" align="right"/>
 
 Skip implementing transformers on your own and
 configure timings in which events in your BLoC's are processed.

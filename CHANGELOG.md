@@ -1,3 +1,7 @@
+## 1.0.2+1
+
+* fix README header
+
 ## 1.0.2
 
 * Bump dependencies
