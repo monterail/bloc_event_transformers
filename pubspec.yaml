@@ -4,7 +4,7 @@ version: 1.0.2
 repository: https://github.com/monterail/bloc_event_transformers
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <4.0.0"
 
 dependencies:
   bloc: ^8.0.2
