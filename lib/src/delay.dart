@@ -1,4 +1,4 @@
-part of bloc_event_transformers;
+part of '../bloc_event_transformers.dart';
 
 /// The delay() transformer is pausing adding events for a particular
 /// increment of time (that you specify) before emitting each of the events.

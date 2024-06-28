@@ -1,6 +1,6 @@
 name: bloc_event_transformers
 description: Configurable transformers for your bloc (bloclibrary.dev) events. Throttle, debounce, skip, and delay with ease.
-version: 1.0.1
+version: 1.0.2
 repository: https://github.com/wrbl-xyz/bloc_event_transformers
 
 environment:
@@ -8,12 +8,13 @@ environment:
 
 dependencies:
   bloc: ^8.0.2
-  rxdart: ^0.27.3
+  rxdart: ^0.28.0
 
 dev_dependencies:
   bloc_test: ^9.0.2
   equatable: ^2.0.3
-  flutter_lints: ^1.0.0
+  lints: ^4.0.0
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

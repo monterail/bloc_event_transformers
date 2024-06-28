@@ -1,3 +1,8 @@
+## 1.0.2
+
+* Bump dependencies
+* Update docs
+
 ## 1.0.1
 
 * Add example

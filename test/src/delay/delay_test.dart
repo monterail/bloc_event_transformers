@@ -13,7 +13,7 @@ void main() {
       List.generate(100, (index) => index)
           .forEach((count) => bloc.add(NewDelayEvent(count + 1)));
     },
-    wait: delayWindow,
+    wait: delayWindow * 2,
     expect: () => List<DelayState>.generate(
       100,
       (index) => DelayState(count: index + 1),

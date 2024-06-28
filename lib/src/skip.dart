@@ -1,4 +1,4 @@
-part of bloc_event_transformers;
+part of '../bloc_event_transformers.dart';
 
 /// Skips the first [count] events.
 ///

@@ -1,4 +1,4 @@
-part of bloc_event_transformers;
+part of '../bloc_event_transformers.dart';
 
 /// Event transformer that will only emit items from the source
 /// sequence whenever the time span defined by [duration] passes, without the

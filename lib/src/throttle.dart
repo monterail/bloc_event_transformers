@@ -1,4 +1,4 @@
-part of bloc_event_transformers;
+part of '../bloc_event_transformers.dart';
 
 /// Emits an <Event>, then ignores subsequent events
 /// for a [duration], then repeats this process.
