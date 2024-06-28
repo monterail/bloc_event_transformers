@@ -1,7 +1,7 @@
 name: bloc_event_transformers
 description: Configurable transformers for your bloc (bloclibrary.dev) events. Throttle, debounce, skip, and delay with ease.
 version: 1.0.2
-repository: https://github.com/wrbl-xyz/bloc_event_transformers
+repository: https://github.com/monterail/bloc_event_transformers
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
