@@ -1,6 +1,6 @@
 part of '../bloc_event_transformers.dart';
 
-/// Emits an <Event>, then ignores subsequent events
+/// Emits an [Event], then ignores subsequent events
 /// for a [duration], then repeats this process.
 ///
 /// If [leading] is true, then the first event in each window is emitted.

@@ -45,7 +45,7 @@ void main() {
     act: (bloc) async {
       List.generate(100, (index) => index)
           .forEach((count) => bloc.add(NewThrottleEvent(count + 1)));
-      await Future.delayed(throttleWindow);
+      await Future.delayed(throttleWindow * 1.5);
       List.generate(100, (index) => index)
           .forEach((count) => bloc.add(NewThrottleEvent(count + 101)));
     },
