@@ -1,6 +1,10 @@
+## 2.0.0
+
+* Upgrade to `bloc: ^9.0.0` (thanks [@ajmalsalim](https://github.com/monterail/bloc_event_transformers/pull/2))
+
 ## 1.0.2+1
 
-* fix README header
+* Fix README header
 
 ## 1.0.2
 
