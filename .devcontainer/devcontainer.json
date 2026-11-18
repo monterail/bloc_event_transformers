@@ -1,0 +1,13 @@
+{
+  "name": "Montecito agent workspace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "node",
+  "updateRemoteUserUID": false,
+  "features": {
+    "./features/github-pr": {}
+  },
+  "appPort": ["0.0.0.0:8080:8080"],
+  "postCreateCommand": "dart pub get"
+}
