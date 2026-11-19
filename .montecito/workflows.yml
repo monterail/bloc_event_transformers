@@ -1,0 +1,31 @@
+# Montecito workflows for bloc_event_transformers
+version: 1
+triggers:
+  jira:
+    type: jira.webhook
+    # Alias bound once in the instance's repository registration.
+    secret: jira
+    ingest:
+      key: issue.key
+      summary: issue.fields.summary
+      description: issue.fields.description
+workflows:
+  implement:
+    trigger: jira
+    when:
+      issue.fields.labels: {includesAll: [montecito]}
+    objective: Implement the requested change, validate it, and submit a GitHub pull request.
+    testCommand: dart pub get && dart test
+    sources: {}
+    writers:
+      github-pr:
+        credentials: {github.pr: github-publisher}
+    agent:
+      provider: claude
+      credential: model
+      maxAttempts: 3
+      timeoutSeconds: 300
+    publisher:
+      provider: claude
+      credential: model
+      timeoutSeconds: 300

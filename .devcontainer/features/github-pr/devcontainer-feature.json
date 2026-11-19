@@ -1,0 +1,6 @@
+{
+  "id": "github-pr",
+  "version": "1.0.0",
+  "name": "GitHub PR writer",
+  "description": "Installs GitHub CLI and a JSON-stdin writer for saved Git bundles. Requires Node in the base image."
+}

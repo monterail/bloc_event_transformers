@@ -1,0 +1,25 @@
+version: 1
+writers:
+  github-pr:
+    features:
+      ./features/github-pr: {}
+    artifactKind: code
+    commands:
+      - gh
+      - git
+    command:
+      - montecito-github-pr
+    instructions: Submit the setup code artifact with this writer. Include a title
+      and body in the delivery request.
+    credentials:
+      github.pr:
+        token: secret
+        repository: string
+        base: string
+    environment:
+      GH_TOKEN:
+        credential: github.pr.token
+      GITHUB_REPOSITORY:
+        credential: github.pr.repository
+      GITHUB_BASE_BRANCH:
+        credential: github.pr.base
