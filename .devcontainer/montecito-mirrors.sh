@@ -57,20 +57,26 @@ setup() {
   cat > "$profile" <<EOF
 # Montecito download cache (written by montecito-mirrors setup).
 export MONTECITO_DOWNLOAD_CACHE='$cache'
-export npm_config_registry='$cache/registry.npmjs.org/'
+export npm_config_registry='$cache/registry.npmjs.org/' pnpm_config_registry='$cache/registry.npmjs.org/'
 export PIP_INDEX_URL='$cache/pypi.org/simple/' PIP_TRUSTED_HOST='$host'
 export UV_DEFAULT_INDEX='$cache/pypi.org/simple/' UV_INSECURE_HOST='$host'
 export GOPROXY='$cache/proxy.golang.org' GOSUMDB='sum.golang.org $cache/sum.golang.org'
 export RUSTUP_DIST_SERVER='$cache/static.rust-lang.org' RUSTUP_UPDATE_ROOT='$cache/static.rust-lang.org/rustup'
 export PUB_HOSTED_URL='$cache/pub.dev' FLUTTER_STORAGE_BASE_URL='$cache/storage.googleapis.com'
 EOF
-  # npm/pnpm also read the global npmrc in RUN steps that skip the profile.
+  # RUN steps that skip the profile: npm reads the global npmrc; pnpm 12 ignores it
+  # (and npm_config_*), but reads pnpm_config_* and each user's ~/.npmrc.
   install -d /usr/local/etc
   printf 'registry=%s/registry.npmjs.org/\n' "$cache" >> /usr/local/etc/npmrc
   printf '[global]\nindex-url = %s/pypi.org/simple/\ntrusted-host = %s\n' "$cache" "$host" > /etc/pip.conf
   # Cargo reads /.cargo/config.toml for every project below /.
   install -d /.cargo
   printf '[source.crates-io]\nreplace-with = "montecito"\n[source.montecito]\nregistry = "sparse+%s/index.crates.io/"\n' "$cache" > /.cargo/config.toml
+  for home in /root /home/*; do
+    [ -d "$home" ] || continue
+    printf 'registry=%s/registry.npmjs.org/\n' "$cache" >> "$home/.npmrc"
+    chown "$(stat -c %u:%g "$home")" "$home/.npmrc"
+  done
   homes .m2 settings.xml "<settings><mirrors><mirror><id>montecito</id><mirrorOf>central</mirrorOf><url>$cache/repo.maven.apache.org/maven2</url><blocked>false</blocked></mirror>
 <mirror><id>maven-default-http-blocker</id><mirrorOf>external:dummy:*</mirrorOf><url>http://0.0.0.0/</url></mirror></mirrors></settings>"
   homes .gradle/init.d montecito-mirrors.gradle "def mirrors = [
