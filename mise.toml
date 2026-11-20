@@ -1,0 +1,14 @@
+# Tool versions managed by mise (https://mise.jdx.dev). Run `mise install`.
+[tools]
+dart = "3.7.2"
+# This package is pure Dart. If Flutter is ever needed, add e.g.:
+# flutter = "3.29.2-stable"
+
+[tasks.get]
+run = "dart pub get"
+
+[tasks.test]
+run = "dart test"
+
+[tasks.analyze]
+run = "dart analyze"
