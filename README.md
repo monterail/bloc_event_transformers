@@ -13,3 +13,13 @@ Available transformers:
 - [debounce](https://pub.dev/documentation/bloc_event_transformers/latest/bloc_event_transformers/debounce.html) (see [visualization](https://rxmarbles.com/#debounceTime))
 - [skip](https://pub.dev/documentation/bloc_event_transformers/latest/bloc_event_transformers/skip.html) (see [visualization](https://rxmarbles.com/#skip))
 - [delay](https://pub.dev/documentation/bloc_event_transformers/latest/bloc_event_transformers/delay.html) (see [visualization](https://rxmarbles.com/#delay))
+
+## Development
+
+Tool versions (Dart) are managed with [mise](https://mise.jdx.dev). With mise installed:
+
+```sh
+mise install   # installs the Dart version pinned in mise.toml
+mise run get   # dart pub get
+mise run test  # dart test
+```
