@@ -12,3 +12,9 @@ run = "dart test"
 
 [tasks.analyze]
 run = "dart analyze"
+
+[tasks.format]
+run = "dart format --set-exit-if-changed ."
+
+[tasks.lint]
+depends = ["format", "analyze"]
