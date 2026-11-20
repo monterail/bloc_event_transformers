@@ -13,14 +13,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install Flutter
-      uses: monterail/flutter-action@v2
+    - name: Set up mise
+      uses: jdx/mise-action@v2
+      with:
+        install: true
+        cache: true
 
     - name: Install dependencies
-      run: flutter pub get
+      run: mise run get
 
     - name: Lint
-      run: dart format --set-exit-if-changed . && flutter analyze
+      run: mise run lint
 
     - name: Run tests
-      run: flutter test
+      run: mise run test
