@@ -55,4 +55,45 @@ void main() {
       const ThrottleState(count: 101),
     ],
   );
+
+  blocTest<ThrottleBloc, ThrottleState>(
+    'Handles a single event',
+    build: () => ThrottleBloc(throttleWindow),
+    act: (bloc) => bloc.add(NewThrottleEvent(1)),
+    wait: throttleWindow * 2,
+    expect: () => [const ThrottleState(count: 1)],
+  );
+
+  blocTest<ThrottleBloc, ThrottleState>(
+    'trailing: true, leading: true handles a single event once',
+    build: () => ThrottleBloc(throttleWindow, trailing: true, leading: true),
+    act: (bloc) => bloc.add(NewThrottleEvent(1)),
+    wait: throttleWindow * 2,
+    expect: () => [const ThrottleState(count: 1)],
+  );
+
+  blocTest<ThrottleBloc, ThrottleState>(
+    'trailing: true, leading: false handles a single event',
+    build: () => ThrottleBloc(throttleWindow, trailing: true, leading: false),
+    act: (bloc) => bloc.add(NewThrottleEvent(1)),
+    wait: throttleWindow * 2,
+    expect: () => [const ThrottleState(count: 1)],
+  );
+
+  blocTest<ThrottleBloc, ThrottleState>(
+    'trailing: false, leading: false does not handle any events',
+    build: () => ThrottleBloc(throttleWindow, trailing: false, leading: false),
+    act: (bloc) => List.generate(10, (index) => index)
+        .map((count) => bloc.add(NewThrottleEvent(count + 1)))
+        .toList(),
+    wait: throttleWindow * 2,
+    expect: () => [],
+  );
+
+  blocTest<ThrottleBloc, ThrottleState>(
+    'Does not trigger if no events are added',
+    build: () => ThrottleBloc(throttleWindow),
+    wait: throttleWindow * 2,
+    expect: () => [],
+  );
 }

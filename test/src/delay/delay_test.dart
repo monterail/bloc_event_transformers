@@ -30,4 +30,19 @@ void main() {
     wait: Duration.zero,
     expect: () => [],
   );
+
+  blocTest<DelayBloc, DelayState>(
+    'Delays a single event',
+    build: () => DelayBloc(delayWindow),
+    act: (bloc) => bloc.add(NewDelayEvent(1)),
+    wait: delayWindow * 2,
+    expect: () => [const DelayState(count: 1)],
+  );
+
+  blocTest<DelayBloc, DelayState>(
+    'Does not trigger if no events are added',
+    build: () => DelayBloc(delayWindow),
+    wait: delayWindow * 2,
+    expect: () => [],
+  );
 }
