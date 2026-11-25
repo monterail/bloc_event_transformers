@@ -32,4 +32,19 @@ void main() {
       const DebounceState(count: 200),
     ],
   );
+
+  blocTest<DebounceBloc, DebounceState>(
+    'Handles a single event',
+    build: () => DebounceBloc(debounceWindow),
+    act: (bloc) => bloc.add(NewDebounceEvent(1)),
+    wait: debounceWindow * 2,
+    expect: () => [const DebounceState(count: 1)],
+  );
+
+  blocTest<DebounceBloc, DebounceState>(
+    'Does not trigger if no events are added',
+    build: () => DebounceBloc(debounceWindow),
+    wait: debounceWindow * 2,
+    expect: () => [],
+  );
 }
